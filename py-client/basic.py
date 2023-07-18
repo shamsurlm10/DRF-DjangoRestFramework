@@ -4,8 +4,11 @@ import requests
 # endpoint = "https://httpbin.org/status/200/"
 endpoint = "http://localhost:8000/api/"
 
-get_request=requests.get(endpoint , json={"product_id":1})
-# print(get_request.text)
-# print(get_request.status_code)
+get_response=requests.get(endpoint , json={"product_id":1})
+print(get_response.text)
+print(get_response.status_code)
+print(get_response.json())
 
-print(get_request.json())
+# print(get_response.headers)
+# print(get_response.text)
+# print(get_response)
