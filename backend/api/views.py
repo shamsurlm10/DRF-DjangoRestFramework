@@ -13,7 +13,7 @@ def api_home(request, *args, **kwargs):
     # if request.method!="POST":
     #     return Response({"detailed":"GET NOT ALLOWED"},status=405)
     serializer=ProductSerializer(data=request.data)
-    if serializer.is_valid():
+    if serializer.is_valid(raise_exception=True):
         instance=serializer.save()
         print(instance)
     # instance = Product.objects.all().order_by("?").first()
@@ -26,3 +26,4 @@ def api_home(request, *args, **kwargs):
     #     # data = model_to_dict(model_data, fields=['id','title', 'content', 'price','sale_price'])
     #     data = ProductSerializer(instance).data
         return Response(serializer.data)
+    return Response({"invalid":"Not good data"}, status=400)
